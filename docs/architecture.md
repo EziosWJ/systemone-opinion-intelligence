@@ -32,7 +32,7 @@ AppProviders(theme, QueryClient)
                        in-memory seeded DB
 ```
 
-**当前实现状态**：通用基础代码已迁入；新的业务路由目前使用 Foundation 占位视图；`/api/meta` 为基础健康/阶段元信息接口。下述业务处理器及真实 Demo 种子数据均是开发规范，不能视作已实现。
+**当前实现状态**：V1 业务功能已实现——确定性种子（4 专题 / 300 帖 / 10k 评论）、采集/分析/复核/专题/报告全部页面与 MSW 处理器、综合态势驾驶舱均可用；`MockAnalysisEngine` 位于 src/mocks/db/database.ts（analyzeComment）。真实爬虫、模型推理与持久化仍按范围排除。
 
 ## 3. 推荐目录
 

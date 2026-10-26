@@ -1,6 +1,6 @@
 # Mock API 契约 — SystemOne V1
 
-**状态**：计划规范。当前已实现的最小路由只有 `GET /api/meta`。下列业务端点需随 GitHub Issues 分阶段实现，不能将其称作已提供的接口。
+**状态**：已实现（V1 Demo）。以下端点已随 M1–M5 里程碑在 MSW 内存态实现，并有自动化测试覆盖（tests/features/、tests/mocks/）。`advance` 类端点为演示专用可控推进。
 
 Base URL：`VITE_API_BASE_URL=/api`；JSON 请求与响应（文件导入单独处理）；时间点统一 ISO 8601 UTC/含时区。
 
