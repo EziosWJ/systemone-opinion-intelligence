@@ -1,0 +1,19 @@
+.wrapper { display: grid; gap: 10px; }
+.dragger :global(.ant-upload-drag) { border-radius: 12px; }
+.dragger { display: block; }
+.icon { margin: 0 0 8px; color: var(--ant-color-link, #635bdb); }
+.title { margin: 0 0 4px; font-weight: 600; }
+.hint { margin: 0; color: var(--ant-color-text-secondary, #777); font-size: 12px; }
+.notice { margin: 4px 0 0 !important; font-size: 12px; }
+.list { display: grid; gap: 10px; margin: 6px 0 0; padding: 0; list-style: none; }
+.item {
+  padding: 12px 14px;
+  border: 1px solid var(--ant-color-border-secondary, #ececf3);
+  border-radius: 10px;
+  background: var(--ant-color-bg-container, #fff);
+}
+.itemMain { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; }
+.fileName { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.size { font-size: 12px; }
+.done, .failed { flex-wrap: wrap; }
+.actions { margin-top: 6px; }
