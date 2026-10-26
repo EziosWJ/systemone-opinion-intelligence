@@ -1,9 +1,9 @@
 export const appConfig = Object.freeze({
-  name: 'React Topnav Template',
-  description: '面向企业业务系统的顶部导航管理后台脚手架',
-  logoText: 'TN',
-  brandColor: '#635bdb',
-  footerText: '© 2026 React Topnav Template · 企业管理应用脚手架',
-  sidebarCaption: '企业业务管理',
+  name: 'SystemOne 舆情智能研判',
+  description: '社交媒体舆情采集、AI 研判、人工复核及专题分析平台',
+  logoText: 'SO',
+  brandColor: '#2563eb',
+  footerText: '© 2026 SystemOne · V1 演示工程',
+  sidebarCaption: '舆情智能研判平台',
   defaultTheme: 'system' as const,
 });

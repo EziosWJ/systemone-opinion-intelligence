@@ -2,7 +2,6 @@ import '@testing-library/jest-dom/vitest';
 import { afterAll, afterEach, beforeAll, vi } from 'vitest';
 import { cleanup, configure } from '@testing-library/react';
 import { server } from '../src/mocks/server';
-import { resetMockData } from '../src/mocks/data';
 
 class ResizeObserverMock {
   observe() {}
@@ -37,7 +36,6 @@ beforeAll(() => server.listen({ onUnhandledRequest: 'error' }));
 afterEach(() => {
   cleanup();
   server.resetHandlers();
-  resetMockData();
   window.localStorage.clear();
   document.documentElement.removeAttribute('data-theme');
 });

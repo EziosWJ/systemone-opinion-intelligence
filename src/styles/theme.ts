@@ -6,7 +6,7 @@ export function createThemeConfig(mode: ThemeMode): ThemeConfig {
   const isDark = mode === 'dark';
   // The brand purple is too dark for text on the dark surfaces; use a lighter
   // link/selected colour while keeping the same hue in light mode.
-  const linkColor = isDark ? '#b7afff' : appConfig.brandColor;
+  const linkColor = isDark ? '#93c5fd' : appConfig.brandColor;
   return {
     algorithm: isDark ? antdTheme.darkAlgorithm : antdTheme.defaultAlgorithm,
     cssVar: {},
@@ -14,8 +14,8 @@ export function createThemeConfig(mode: ThemeMode): ThemeConfig {
       colorPrimary: appConfig.brandColor,
       colorInfo: appConfig.brandColor,
       colorLink: linkColor,
-      colorLinkHover: isDark ? '#d3ceff' : '#8b7cf6',
-      colorLinkActive: isDark ? '#9d93ff' : '#4b44b8',
+      colorLinkHover: isDark ? '#bfdbfe' : '#1d4ed8',
+      colorLinkActive: isDark ? '#60a5fa' : '#1e40af',
       borderRadius: 8,
       fontFamily:
         'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif',
@@ -43,7 +43,7 @@ export function createThemeConfig(mode: ThemeMode): ThemeConfig {
         headerBg: isDark ? '#1c1f2c' : '#f7f8fc',
         headerColor: isDark ? '#e6e8f0' : '#4a4e5e',
         headerSplitColor: 'transparent',
-        rowHoverBg: isDark ? '#202433' : '#f8f7ff',
+        rowHoverBg: isDark ? '#202433' : '#eff6ff',
         cellPaddingBlock: 12,
         cellPaddingInline: 14,
         headerBorderRadius: 10,
