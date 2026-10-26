@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { Button, Drawer, Tag, Typography } from 'antd';
+import { Button, DatePicker, Drawer, Tag, Typography } from 'antd';
 import { useListUrlState } from '../../../hooks/useListUrlState';
 import { SearchFilterBar } from '../../../components/SearchFilterBar/SearchFilterBar';
 import { ListPageTemplate } from '../../../components/templates/ListPageTemplate';
@@ -10,6 +10,7 @@ import { copy } from '../../../config/copy';
 import { useDataExport } from '../../../hooks/useDataExport';
 import { useCommentDetail, useCommentList } from '../../capture/hooks';
 import { formatDateTime } from '../../../utils/format';
+import dayjs, { type Dayjs } from 'dayjs';
 import { commentsApi, type CommentListItem } from '../api/comments.api';
 
 const { Text, Paragraph } = Typography;
@@ -122,9 +123,26 @@ export default function CommentsPage() {
             ) : undefined
           }
           filters={
-            <Text type="secondary" style={{ alignSelf: 'center' }}>
-              可按发布日期与原帖过滤（日期输入框位于右侧），数据规模 10k 条。
-            </Text>
+            <>
+              <DatePicker.RangePicker
+                value={[
+                  listState.state.filters.from ? dayjs(listState.state.filters.from) : null,
+                  listState.state.filters.to ? dayjs(listState.state.filters.to) : null,
+                ] as [Dayjs | null, Dayjs | null]}
+                onChange={(dates) => {
+                  const [from, to] = dates ?? [null, null];
+                  listState.setFilters({
+                    from: from?.format('YYYY-MM-DD'),
+                    to: to?.format('YYYY-MM-DD'),
+                  });
+                }}
+                allowEmpty={[true, true]}
+                aria-label="发布日期范围"
+              />
+              <Text type="secondary" style={{ alignSelf: 'center' }}>
+                可按发布日期与原帖 ID 过滤，数据规模 10k 条。
+              </Text>
+            </>
           }
           actions={<ExportButton onExport={(format) => exportFiltered(format)} />}
         />

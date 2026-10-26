@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { Tag, Typography } from 'antd';
+import { DatePicker, Tag, Typography } from 'antd';
 import { Link } from 'react-router-dom';
 import { useListUrlState } from '../../../hooks/useListUrlState';
 import { SearchFilterBar } from '../../../components/SearchFilterBar/SearchFilterBar';
@@ -11,6 +11,7 @@ import { useDataExport } from '../../../hooks/useDataExport';
 import { usePostList } from '../../capture/hooks';
 import { useTopicList } from '../../topics/hooks';
 import { formatDateTime } from '../../../utils/format';
+import dayjs, { type Dayjs } from 'dayjs';
 import { Select } from 'antd';
 import type { PostWithCount } from '../api/posts.api';
 
@@ -123,6 +124,21 @@ export default function PostsPage() {
           }
           filters={
             <>
+              <DatePicker.RangePicker
+                value={[
+                  listState.state.filters.from ? dayjs(listState.state.filters.from) : null,
+                  listState.state.filters.to ? dayjs(listState.state.filters.to) : null,
+                ] as [Dayjs | null, Dayjs | null]}
+                onChange={(dates) => {
+                  const [from, to] = dates ?? [null, null];
+                  listState.setFilters({
+                    from: from?.format('YYYY-MM-DD'),
+                    to: to?.format('YYYY-MM-DD'),
+                  });
+                }}
+                allowEmpty={[true, true]}
+                aria-label="发布日期范围"
+              />
               <Select
                 allowClear
                 placeholder="专题"
