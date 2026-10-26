@@ -64,7 +64,7 @@ export function getNavigationRoute(pathname: string): AppRouteDefinition | undef
   return current?.navigation ? current : undefined;
 }
 
-/** Maps a configured parent pattern onto the live URL, e.g. /customers/:id -> /customers/cus_01. */
+/** Maps a configured parent pattern onto the live URL, e.g. /topics/:id -> /topics/topic_001. */
 function actualPathFor(routePath: string, pathname: string): string {
   const length = routePath.split('/').filter(Boolean).length;
   const segments = pathname.split('/').filter(Boolean).slice(0, length);

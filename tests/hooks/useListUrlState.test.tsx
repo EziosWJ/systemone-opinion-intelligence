@@ -21,17 +21,17 @@ function wrapper(initialEntry: string) {
 describe('useListUrlState', () => {
   it('reads valid URL state and normalises illegal defaults', () => {
     const valid = renderHook(() => useListUrlState(config), {
-      wrapper: wrapper('/customers?page=2&pageSize=20&keyword=%20%E5%AE%A2%E6%88%B7%20&status=active&industry=bad&sortBy=name&sortOrder=asc'),
+      wrapper: wrapper('/capture/comments?page=2&pageSize=20&keyword=%20%E8%AF%84%E8%AE%BA%20&status=active&industry=bad&sortBy=name&sortOrder=asc'),
     });
     expect(valid.result.current.state.page).toBe(2);
     expect(valid.result.current.state.pageSize).toBe(20);
-    expect(valid.result.current.state.keyword).toBe('客户');
+    expect(valid.result.current.state.keyword).toBe('评论');
     expect(valid.result.current.state.sortBy).toBe('name');
     expect(valid.result.current.state.sortOrder).toBe('asc');
     expect(valid.result.current.state.filters).toEqual({ status: 'active' });
 
     const invalid = renderHook(() => useListUrlState(config), {
-      wrapper: wrapper('/customers?page=-3&pageSize=999&sortBy=hack&sortOrder=sideways&startDateFrom=2026-99-99&status=deleted'),
+      wrapper: wrapper('/capture/comments?page=-3&pageSize=999&sortBy=hack&sortOrder=sideways&startDateFrom=2026-99-99&status=deleted'),
     });
     expect(invalid.result.current.state).toMatchObject({
       page: 1,
@@ -45,7 +45,7 @@ describe('useListUrlState', () => {
 
   it('keeps query state in the URL through search, filters, sort and pagination', async () => {
     const { result } = renderHook(() => useListUrlState(config), {
-      wrapper: wrapper('/customers'),
+      wrapper: wrapper('/capture/comments'),
     });
 
     act(() => result.current.submitSearch('  星海  '));
@@ -75,7 +75,7 @@ describe('useListUrlState', () => {
 
   it('resets every list parameter', async () => {
     const { result } = renderHook(() => useListUrlState(config), {
-      wrapper: wrapper('/customers?page=3&pageSize=20&keyword=abc&status=active&sortBy=name&sortOrder=asc'),
+      wrapper: wrapper('/capture/comments?page=3&pageSize=20&keyword=abc&status=active&sortBy=name&sortOrder=asc'),
     });
     expect(result.current.state.page).toBe(3);
 
@@ -95,7 +95,7 @@ describe('useListUrlState', () => {
 
   it('applies sequential updates without losing earlier changes', async () => {
     const { result } = renderHook(() => useListUrlState(config), {
-      wrapper: wrapper('/customers'),
+      wrapper: wrapper('/capture/comments'),
     });
 
     act(() => {
@@ -112,7 +112,7 @@ describe('useListUrlState', () => {
 
   it('ignores filters that are not configured', async () => {
     const { result } = renderHook(() => useListUrlState(config), {
-      wrapper: wrapper('/customers'),
+      wrapper: wrapper('/capture/comments'),
     });
     act(() => result.current.setFilters({ notAllowed: 'x', status: 'inactive' }));
     await waitFor(() => expect(result.current.state.filters.status).toBe('inactive'));

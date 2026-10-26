@@ -34,7 +34,7 @@ describe('MockUpload', () => {
     const onPreview = vi.fn();
     const { container } = renderWithProviders(<MockUpload onPreview={onPreview} />);
 
-    await user.upload(uploadInput(container), new File(['a,b'], 'customers.csv', { type: 'text/csv' }));
+    await user.upload(uploadInput(container), new File(['a,b'], 'comments.csv', { type: 'text/csv' }));
     expect(screen.getByRole('progressbar')).toBeInTheDocument();
 
     expect(await screen.findByText('模拟上传成功', {}, { timeout: 4000 })).toBeInTheDocument();

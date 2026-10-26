@@ -27,8 +27,3 @@ export interface EntityReference {
   id: string;
   name: string;
 }
-
-export interface CustomerReferenceCheck {
-  projects: EntityReference[];
-  orders: Array<{ id: string; orderNo: string }>;
-}

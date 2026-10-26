@@ -12,9 +12,9 @@ body {
   text-rendering: optimizeLegibility;
 }
 button, input, textarea, select { font: inherit; }
-a { color: var(--ant-color-link, #635bdb); text-decoration: none; }
-a:hover { color: var(--ant-color-link-hover, #8b7cf6); }
-:focus-visible { outline: 2px solid var(--ant-color-link, #635bdb); outline-offset: 3px; }
+a { color: var(--ant-color-link, #2563eb); text-decoration: none; }
+a:hover { color: var(--ant-color-link-hover, #60a5fa); }
+:focus-visible { outline: 2px solid var(--ant-color-link, #2563eb); outline-offset: 3px; }
 #root { min-height: 100vh; }
 .routeLoading {
   display: flex;

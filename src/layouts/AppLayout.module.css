@@ -10,7 +10,7 @@
   padding: 8px 14px;
   border-radius: 0 0 8px 8px;
   color: #fff;
-  background: var(--ant-color-primary, #635bdb);
+  background: var(--ant-color-primary, #2563eb);
   transition: top .15s ease;
 }
 .skipLink:focus { top: 0; }
@@ -45,7 +45,7 @@
   place-items: center;
   border-radius: 11px;
   color: #fff;
-  background: linear-gradient(135deg, var(--ant-color-primary, #635bdb), #8b7cf6);
+  background: linear-gradient(135deg, var(--ant-color-primary, #2563eb), #60a5fa);
   font-size: 13px;
   font-weight: 800;
   letter-spacing: .04em;
