@@ -20,23 +20,23 @@ describe('theme tokens', () => {
   it('keeps link and selected-menu text readable on dark surfaces', () => {
     const dark = createThemeConfig('dark');
     const link = dark.token?.colorLink as string;
-    expect(link).toBe('#b7afff');
+    expect(link).toBe('#93c5fd');
     expect(dark.components?.Menu?.horizontalItemSelectedColor).toBe(link);
     expect(dark.components?.Menu?.itemSelectedColor).toBe(link);
     expect(contrastRatio(link, dark.token?.colorBgContainer as string)).toBeGreaterThanOrEqual(4.5);
     expect(contrastRatio(link, dark.token?.colorBgLayout as string)).toBeGreaterThanOrEqual(4.5);
   });
 
-  it('uses the brand purple for links on light surfaces', () => {
+  it('uses the brand blue for links on light surfaces', () => {
     const light = createThemeConfig('light');
     const link = light.token?.colorLink as string;
-    expect(link).toBe('#635bdb');
+    expect(link).toBe('#2563eb');
     expect(contrastRatio(link, light.token?.colorBgContainer as string)).toBeGreaterThanOrEqual(4.5);
   });
 
   it('keeps the brand primary color and rounded design tokens in both modes', () => {
-    expect(createThemeConfig('light').token?.colorPrimary).toBe('#635bdb');
-    expect(createThemeConfig('dark').token?.colorPrimary).toBe('#635bdb');
+    expect(createThemeConfig('light').token?.colorPrimary).toBe('#2563eb');
+    expect(createThemeConfig('dark').token?.colorPrimary).toBe('#2563eb');
     expect(createThemeConfig('light').token?.borderRadius).toBe(8);
     expect(createThemeConfig('dark').token?.borderRadius).toBe(8);
   });
