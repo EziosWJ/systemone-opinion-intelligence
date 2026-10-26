@@ -1,0 +1,2 @@
+.section { margin-bottom: 16px; border-radius: 14px; }
+.section :global(.ant-card-head) { min-height: 48px; }

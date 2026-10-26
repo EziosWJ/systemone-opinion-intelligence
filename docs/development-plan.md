@@ -1,0 +1,73 @@
+# 分阶段开发计划与 Issue 清单
+
+V1 的优先目标是客户能够沿着 **采集 → 研判 → 复核 → 专题 → 报告** 操作，所有结果来自一套 MSW 内存态。任务以依赖顺序推进，不允许在没有测试验证时标记完成。
+
+## 里程碑总览
+
+| 阶段 | 目的 | 交付 | 依赖 |
+| --- | --- | --- | --- |
+| M0 | 模板迁移与规范 | 工程基础、导航、README、PRD/架构/API/验收 | 无 |
+| M1 | Mock 数据引擎 | 4 专题、300 帖、约 10k 评论；查询和聚合 API | M0 |
+| M2 | 采集管理 | 三入口创建任务、执行进度、微博/评论库 | M1 |
+| M3 | AI 研判 | 规则模板、任务中心、评分结果、工作台 | M1–M2 |
+| M4 | 人工复核 | 复核队列、详情抽屉、状态联动 | M3 |
+| M5 | 专题与报告 | 专题创建/聚合/趋势，报告生成编辑导出 | M3–M4 |
+| M6 | 联调与验收 | 首页可视化、数据一致性回归、CI/演示脚本 | M1–M5 |
+
+## 拆分任务（可直接对应 GitHub Issues）
+
+### [#2](https://github.com/EziosWJ/systemone-opinion-intelligence/issues/2) 基础工程迁移与导航
+- 改造品牌、CSS/Token、顶部业务模块分组及路由；移除客户/项目/订单/用户旧业务。
+- 保留表格、状态、搜索、上传、导出、布局、主题、错误边界、测试基础。
+- Done：可运行、导航不出现旧业务，CI 所有门禁通过；规范文档完整。
+
+### [#3](https://github.com/EziosWJ/systemone-opinion-intelligence/issues/3) 统一 Mock 种子数据库与基础查询
+- deterministic seed（4/300/10k），关系校验，分页/排序/筛选/时间范围。
+- 实现帖子、评论、专题基础 GET 和 Dashboard 汇总读取。
+- Done：统计一致且可重置；大量数据表格分页性能满足验收。
+
+### [#4](https://github.com/EziosWJ/systemone-opinion-intelligence/issues/4) 综合采集任务管理
+- 文件导入、微博链接、关键词入口；任务列表/详情/进度/失败模拟。
+- 原帖评论关联、模拟产出记录；参数校验与错误反馈。
+- Done：任务变化导致关联内容库可验证变化。
+
+### [#5](https://github.com/EziosWJ/systemone-opinion-intelligence/issues/5) AI 规则模板、任务与模拟评分
+- 多维评分语义、规则版本、任务队列、确定性引擎和批量输出。
+- Done：相关性、反讽可能性、情绪、优先级、依据、置信度可追溯，状态正确。
+
+### [#6](https://github.com/EziosWJ/systemone-opinion-intelligence/issues/6) 研判工作台与人工复核
+- DataTable 筛选、详情抽屉、原帖上下文、批量选择、复核记录。
+- Done：复核状态与队列及首页 KPI 同步；可撤回/变更留历史。
+
+### [#7](https://github.com/EziosWJ/systemone-opinion-intelligence/issues/7) 专题管理与数据聚合
+- 专题新建/详情、评论关联、趋势、观点分布。
+- Done：专题数据来自选中的评论和分析结果；无静态伪造 KPI。
+
+### [#8](https://github.com/EziosWJ/systemone-opinion-intelligence/issues/8) 报告生成、编辑与导出
+- 基于专题快照生成报告、编辑、预览，HTML 与 XLSX 首期格式。
+- Done：文件成功下载、内容一致、来源可追溯；导出失败有反馈。
+
+### [#9](https://github.com/EziosWJ/systemone-opinion-intelligence/issues/9) 综合态势驾驶舱
+- KPI、趋势、话题排名、复核待办；下钻到带查询条件的业务页面。
+- Done：所有聚合口径与业务明细一致；刷新/操作后联动更新。
+
+### [#10](https://github.com/EziosWJ/systemone-opinion-intelligence/issues/10) 全链路验收、性能与演示脚本
+- 自动化测试、错误/空状态、跨浏览器响应式，演示数据重置。
+- Done：用户能演示一条完整链路；CI 全绿；docs/acceptance.md 全项核对。
+
+## 推荐 PR 组织
+
+每个 Issue 单独分支和 PR，先提交契约与测试再功能实现。M0 先合并，不在 M0 中伪装完成后续业务。规模较大可把 ISSUE-02 拆为 Seed、查询、聚合三个 PR。
+
+## 交付质量门禁
+
+```bash
+pnpm install --frozen-lockfile
+pnpm lint
+pnpm typecheck
+pnpm test
+pnpm test:coverage
+pnpm build
+```
+
+运行结果必须附在 PR/CI；没有证据不得标记通过。
