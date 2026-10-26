@@ -92,3 +92,25 @@ describe('comments and posts query APIs', () => {
     await expect(commentsApi.detail('cmt_missing')).rejects.toMatchObject({ response: { status: 404 } });
   });
 });
+
+describe('date range URL filters', () => {
+  it('filters comments by from/to publication dates', async () => {
+    const { commentsApi } = await import('../../src/features/capture/api/comments.api');
+    const all = await commentsApi.list({ page: 1, pageSize: 10 });
+    const sample = all.items[0];
+    const day = sample.publishedAt.slice(0, 10);
+    const sameDay = await commentsApi.list({ page: 1, pageSize: 100, from: day, to: day });
+    expect(sameDay.total).toBeGreaterThan(0);
+    for (const item of sameDay.items) expect(item.publishedAt.slice(0, 10)).toBe(day);
+    const none = await commentsApi.list({ page: 1, pageSize: 10, from: '2001-01-01', to: '2001-01-02' });
+    expect(none.total).toBe(0);
+  });
+
+  it('filters posts by publication date range', async () => {
+    const { postsApi } = await import('../../src/features/capture/api/posts.api');
+    const result = await postsApi.list({ page: 1, pageSize: 100, from: '2001-01-01', to: '2001-01-02' });
+    expect(result.total).toBe(0);
+    const recent = await postsApi.list({ page: 1, pageSize: 100, from: '2026-10-20' });
+    expect(recent.total).toBeGreaterThan(0);
+  });
+});
