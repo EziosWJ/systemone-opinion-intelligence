@@ -4,6 +4,7 @@ export type CaptureMode = 'url' | 'keyword' | 'import';
 export type TaskStatus = 'pending' | 'running' | 'completed' | 'failed' | 'canceled';
 export type ReviewStatus = 'pending' | 'confirmed' | 'uncertain' | 'rejected';
 export type ReportStatus = 'draft' | 'ready' | 'exported';
+export type Sentiment = AnalysisResult['sentiment'];
 export type ISODateTime = string;
 export interface Topic { id: string; title: string; summary: string; keywords: string[]; createdAt: ISODateTime; updatedAt: ISODateTime; }
 export interface SocialPost { id: string; platform: SourcePlatform; sourceId: string; url: string; text: string; publishedAt: ISODateTime; topicIds: string[]; }
