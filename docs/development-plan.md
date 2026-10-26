@@ -16,42 +16,42 @@ V1 的优先目标是客户能够沿着 **采集 → 研判 → 复核 → 专�
 
 ## 拆分任务（可直接对应 GitHub Issues）
 
-### ISSUE-01 基础工程迁移与导航
+### [#2](https://github.com/EziosWJ/systemone-opinion-intelligence/issues/2) 基础工程迁移与导航
 - 改造品牌、CSS/Token、顶部业务模块分组及路由；移除客户/项目/订单/用户旧业务。
 - 保留表格、状态、搜索、上传、导出、布局、主题、错误边界、测试基础。
 - Done：可运行、导航不出现旧业务，CI 所有门禁通过；规范文档完整。
 
-### ISSUE-02 统一 Mock 种子数据库与基础查询
+### [#3](https://github.com/EziosWJ/systemone-opinion-intelligence/issues/3) 统一 Mock 种子数据库与基础查询
 - deterministic seed（4/300/10k），关系校验，分页/排序/筛选/时间范围。
 - 实现帖子、评论、专题基础 GET 和 Dashboard 汇总读取。
 - Done：统计一致且可重置；大量数据表格分页性能满足验收。
 
-### ISSUE-03 综合采集任务管理
+### [#4](https://github.com/EziosWJ/systemone-opinion-intelligence/issues/4) 综合采集任务管理
 - 文件导入、微博链接、关键词入口；任务列表/详情/进度/失败模拟。
 - 原帖评论关联、模拟产出记录；参数校验与错误反馈。
 - Done：任务变化导致关联内容库可验证变化。
 
-### ISSUE-04 AI 规则模板、任务与模拟评分
+### [#5](https://github.com/EziosWJ/systemone-opinion-intelligence/issues/5) AI 规则模板、任务与模拟评分
 - 多维评分语义、规则版本、任务队列、确定性引擎和批量输出。
 - Done：相关性、反讽可能性、情绪、优先级、依据、置信度可追溯，状态正确。
 
-### ISSUE-05 研判工作台与人工复核
+### [#6](https://github.com/EziosWJ/systemone-opinion-intelligence/issues/6) 研判工作台与人工复核
 - DataTable 筛选、详情抽屉、原帖上下文、批量选择、复核记录。
 - Done：复核状态与队列及首页 KPI 同步；可撤回/变更留历史。
 
-### ISSUE-06 专题管理与数据聚合
+### [#7](https://github.com/EziosWJ/systemone-opinion-intelligence/issues/7) 专题管理与数据聚合
 - 专题新建/详情、评论关联、趋势、观点分布。
 - Done：专题数据来自选中的评论和分析结果；无静态伪造 KPI。
 
-### ISSUE-07 报告生成、编辑与导出
+### [#8](https://github.com/EziosWJ/systemone-opinion-intelligence/issues/8) 报告生成、编辑与导出
 - 基于专题快照生成报告、编辑、预览，HTML 与 XLSX 首期格式。
 - Done：文件成功下载、内容一致、来源可追溯；导出失败有反馈。
 
-### ISSUE-08 综合态势驾驶舱
+### [#9](https://github.com/EziosWJ/systemone-opinion-intelligence/issues/9) 综合态势驾驶舱
 - KPI、趋势、话题排名、复核待办；下钻到带查询条件的业务页面。
 - Done：所有聚合口径与业务明细一致；刷新/操作后联动更新。
 
-### ISSUE-09 全链路验收、性能与演示脚本
+### [#10](https://github.com/EziosWJ/systemone-opinion-intelligence/issues/10) 全链路验收、性能与演示脚本
 - 自动化测试、错误/空状态、跨浏览器响应式，演示数据重置。
 - Done：用户能演示一条完整链路；CI 全绿；docs/acceptance.md 全项核对。
 
